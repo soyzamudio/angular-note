@@ -10,7 +10,6 @@ mongoose.connect(process.env.MONGO_URL);
 server.connection({port:process.env.PORT});
 
 mongoose.connection.once('open', function() {
-  server.views(require('./config/views'));
   server.register(plugins, function() {
     server.route(routes);
     server.start(function() {
