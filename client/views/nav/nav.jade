@@ -1,0 +1,15 @@
+nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle.collapsed(data-toggle="collapse", data-target="#navbar")
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand(href='/') Angular Notes
+    #navbar.collapse.navbar-collapse
+      ul.nav.navbar-nav.navbar-right
+        li: a(ui-sref='home') Home
+        li: a(ui-sref='faq') FAQ
+        li: a(ui-sref='contact') Contact
+        li: a(ui-sref='register') Register
