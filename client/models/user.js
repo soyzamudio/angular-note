@@ -7,6 +7,10 @@ angular.module('angular-notes')
       return $http.post('/register', user);
     }
 
-    return {register:register};
+    function login(user) {
+      return $http.post('/login', user);
+    }
+
+    return {register:register, login:login};
 
   }]);

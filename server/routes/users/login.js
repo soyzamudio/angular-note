@@ -12,11 +12,13 @@ module.exports = {
     }
   },
   handler: function(request, reply) {
-    console.log('Payload', request.payload);
-    var newUser = new User(request.payload);
-    newUser.register(function(err) {
-      if (err) { reply().code(400); }
-      else { reply().code(200); }
+    User.authenticate(request.payload, function(err, user) {
+      if (err) {
+        reply().code(400);
+      } else {
+        request.auth.session.set(user);
+        reply({email: user.email}).code(200);
+      }
     });
   }
 };

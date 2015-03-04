@@ -20,6 +20,15 @@ userSchema.methods.register = function(callback) {
   });
 };
 
+userSchema.statics.authenticate = function(user, callback) {
+  User.findOne({email: user.email}, function(err, dbuser) {
+    if (!dbuser) { return callback(true); }
+    var isGood = bcrypt.compareSync(user.password, dbuser.password);
+    if (!isGood) { return callback(true); }
+    callback(null, dbuser);
+  });
+};
+
 User = mongoose.model('User', userSchema);
 
 module.exports = User;
