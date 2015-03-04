@@ -1,0 +1,16 @@
+.container
+  .row
+    form
+      .form-group
+        input.form-control(ng-model='note.title', name='title', placeholder='Title')
+      .form-group
+        textarea.form-control(ng-model='note.body', placeholder='Note')
+      .form-group
+        input.form-control(ng-model='note.tags', type='text', placeholder='Comma Separated Tags')
+      .form-group
+        button.btn.btn-default.btn-sm(ng-click='addInputField()') Add URL
+      .form-group(ng-repeat='input in inputs track by $index')
+        input.form-control(type='text', placeholder='http://', ng-model='note.urls[$index]')
+      .form-group
+        button.bnt.btn-default(ng-click='submit(note)') Create Note
+      

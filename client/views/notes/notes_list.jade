@@ -1,0 +1,10 @@
+.container-fluid
+  .row.notes
+    .col-md-3.outer(ng-repeat='item in list')
+      .col-md-12.inner
+        h3 {{item.title}}
+        p {{item.body}}
+        .form-group
+          span.label.label-primary.tag.text-center(ng-repeat='tag in item.tags') {{tag}}
+        .form-group
+          span.label.label-primary.url.text-center(ng-repeat='url in item.urls'): a(href='{{url}}'): i.fa.fa-link

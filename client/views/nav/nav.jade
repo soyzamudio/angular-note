@@ -9,6 +9,8 @@ nav.navbar.navbar-default(ng-controller='NavCtrl')
       a.navbar-brand(href='/') Angular Notes
     #navbar.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
+        li: a(ui-sref='notes.new', ng-show='email') New Note
+        li: a(ui-sref='notes.list', ng-show='email') Notes
         li: a(ui-sref='home') Home
         li: a(ui-sref='faq') FAQ
         li: a(ui-sref='contact') Contact
