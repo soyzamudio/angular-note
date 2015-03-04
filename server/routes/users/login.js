@@ -16,6 +16,7 @@ module.exports = {
       if (err) {
         reply().code(400);
       } else {
+        
         request.auth.session.set(user);
         reply({email: user.email}).code(200);
       }
