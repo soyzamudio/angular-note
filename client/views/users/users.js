@@ -10,7 +10,6 @@ angular.module('angular-notes')
           User.register({email: user.email, password: user.password1}).then(function(){
             $state.go('login');
           }, function(){
-            console.log('Bad');
             user.email = user.password1 = user.password2 = '';
           });
         } else {

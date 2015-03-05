@@ -12,7 +12,6 @@ module.exports = {
     }
   },
   handler: function(request, reply) {
-    console.log('Payload', request.payload);
     var newUser = new User(request.payload);
     newUser.register(function(err) {
       if (err) { reply().code(400); }

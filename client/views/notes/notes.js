@@ -11,8 +11,8 @@ angular.module('angular-notes')
 
     $scope.submit = function(note) {
       Note.create(note).then(function(response) {
-        console.log(response.data);
         $state.go('notes.list');
+        response.data.summary = response.data.body.substring(0,150) + '...';
         $rootScope.list.push(response.data);
       });
     };

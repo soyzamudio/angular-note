@@ -18,12 +18,13 @@ angular.module('angular-notes', ['ui.router'])
   }])
   .run(['$rootScope', 'User', 'Note', function($rootScope, User, Note) {
     User.status().then(function(response) {
-      console.log(response.data);
       $rootScope.email = response.data.email;
     });
 
     Note.findAll().then(function(response) {
-      console.log(response);
+      response.data.forEach(function(item) {
+        item.summary = item.body.substring(0,150) + '...';
+      });
       $rootScope.list = response.data || [];
     });
   }]);

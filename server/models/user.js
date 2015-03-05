@@ -15,7 +15,6 @@ userSchema.methods.register = function(callback) {
   User.findOne({email: self.email}, function(err, user) {
     if (user) { return callback(true); }
     self.password = bcrypt.hashSync(self.password, 8);
-    console.log('Self:', self);
     self.save(callback);
   });
 };
