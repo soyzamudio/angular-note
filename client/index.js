@@ -13,18 +13,11 @@ angular.module('angular-notes', ['ui.router'])
 
       .state('notes', { url: '/notes', templateUrl: 'views/notes/notes.html', abstract:true })
       .state('notes.new', { url: '/new', templateUrl: 'views/notes/notes_new.html', controller: 'NotesCtrl' })
-      .state('notes.list', { url: '', templateUrl: 'views/notes/notes_list.html', controller: 'NotesCtrl' })
+      .state('notes.list', { url: '?tag', templateUrl: 'views/notes/notes_list.html', controller: 'NotesCtrl' })
       .state('notes.show', { url: '/{noteId}', templateUrl: 'views/notes/notes_show.html', controller: 'NotesCtrl' });
   }])
-  .run(['$rootScope', 'User', 'Note', function($rootScope, User, Note) {
+  .run(['$rootScope', 'User', function($rootScope, User) {
     User.status().then(function(response) {
       $rootScope.email = response.data.email;
-    });
-
-    Note.findAll().then(function(response) {
-      response.data.forEach(function(item) {
-        item.summary = item.body.substring(0,150) + '...';
-      });
-      $rootScope.list = response.data || [];
     });
   }]);

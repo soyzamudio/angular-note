@@ -1,1 +1,9 @@
 h1 notes show
+ul
+  li {{note.title}}
+  li {{note.body}}
+ul
+  li(ng-repeat='tag in note.tags'): a(ui-sref='note.list({tag:tag})') {{tag}}
+ul
+  li(ng-repeat='url in note.urls') {{url}}
+  

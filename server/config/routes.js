@@ -9,5 +9,6 @@ module.exports = [
   {method: 'delete', path: '/logout', config: require('../routes/users/logout')},
 
   {method: 'get', path: '/notes', config: require('../routes/notes/index')},
-  {method: 'post', path: '/notes/create', config: require('../routes/notes/create')}
+  {method: 'post', path: '/notes/create', config: require('../routes/notes/create')},
+  {method: 'get', path: '/notes/{noteId}', config: require('../routes/notes/show')}
 ];

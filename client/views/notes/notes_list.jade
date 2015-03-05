@@ -1,10 +1,10 @@
 .container-fluid
   .row.notes
-    .col-md-3.outer(ng-repeat='item in list')
+    .col-md-3.outer(ng-repeat='note in notes | filter: filter')
       .col-md-12.inner
-        h3 {{item.title}}
-        p.text-justify {{item.summary}}
+        h3: a(ui-sref='notes.show({noteId: note._id})') {{note.title}}
+        p.text-justify {{note.summary}}
         .form-group.extras
-          span.label.label-primary.tag.text-center(ng-repeat='tag in item.tags') {{tag}}
+          span.label.label-primary.tag.text-center(ng-repeat='tag in note.tags'): a(ui-sref='note.list({tag:tag})') {{tag}}
         .form-group
-          span.label.label-primary.url.text-center(ng-repeat='url in item.urls'): a(href='{{url}}'): i.fa.fa-link
+          span.label.label-primary.url.text-center(ng-repeat='url in note.urls'): a(href='{{url}}'): i.fa.fa-link

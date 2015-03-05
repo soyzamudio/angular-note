@@ -11,6 +11,10 @@ angular.module('angular-notes')
       return $http.get('/notes');
     }
 
-    return {create:create, findAll:findAll};
+    function show(noteId) {
+      return $http.get('/notes/' + noteId);
+    }
+
+    return {create:create, findAll:findAll, show:show};
 
   }]);
